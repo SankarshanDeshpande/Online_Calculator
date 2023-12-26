@@ -26,6 +26,10 @@
             width: 500px;
             background-color: #82ab6f;
             font-size: 50px;
+            color: black;
+        }
+        ::placeholder {
+            color: black;
         }
         .bn{
             height: 60px;
@@ -62,13 +66,13 @@
 <body>
     <div class="container">
         <div class="row r1">
-            <input type="text" id="output" disabled>
+            <input type="text" id="output" placeholder="0" disabled>
         </div>
         <div class="row r2">
-            <button class="btn btn-primary bn" onclick="inputData('+')">+</button>
-            <button class="btn btn-primary bn" onclick="inputData('-')">-</button>
-            <button class="btn btn-primary bn" onclick="inputData('*')">×</button>
-            <button class="btn btn-primary bn" onclick="inputData('/')">÷</button>
+            <button class="btn btn-primary bn" name="fn" onclick="inputData('+')">+</button>
+            <button class="btn btn-primary bn" name="fn" onclick="inputData('-')">-</button>
+            <button class="btn btn-primary bn" name="fn" onclick="inputData('*')">×</button>
+            <button class="btn btn-primary bn" name="fn" onclick="inputData('/')">÷</button>
             <button class="btn btn-primary bn" onclick="inputData('7')">7</button>
             <button class="btn btn-primary bn" onclick="inputData('8')">8</button>
             <button class="btn btn-primary bn" onclick="inputData('9')">9</button>
@@ -103,7 +107,15 @@
         }
 
         function inputData(x){
+            z = document.getElementById("output").value
+            if(z.slice(-1) == '+' || z.slice(-1) == '-' || z.slice(-1) == '*' || z.slice(-1) == '/'){
+                if (x == '+' || x == '-' || x == '*' || x == '/'){
+                    backSpace();
+                }
+            }
             document.getElementById("output").value = document.getElementById("output").value+x
+            
+            
         }
 
         function backSpace(){
